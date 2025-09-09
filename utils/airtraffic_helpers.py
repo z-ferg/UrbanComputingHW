@@ -128,8 +128,9 @@ def generate_clustering_coefficient_plot(g):
     sns.set_style('whitegrid')
     #Ignore nodes with clustering coefficients of zero.
     clustering_coefficients=list(filter
-        (lambda y: y[1]>0,sorted(
-            nx.clustering(g).items(),key=lambda x: x[1],reverse=True)))
+        (lambda y: y[1]>0,
+        sorted(nx.clustering(g).items(),key=lambda x: x[1],reverse=True)))
+    clustering_coefficients = list(sorted(nx.clustering(g).items(),key=lambda x: x[1], reverse=True))
     plt.figure(figsize=(7,7))
     plt.plot(list(map(lambda x: x[1],clustering_coefficients)))
     plt.ylabel("Clustering Coefficient",fontsize=16)
